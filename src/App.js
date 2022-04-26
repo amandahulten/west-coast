@@ -20,7 +20,8 @@ function App() {
   return (
     <div className="App">
       <ul>
-        {data && data.map(({ item, i }) => <li key={i}>{item?.validTime}</li>)}
+        hejehje
+        {data && data.map((item) => <li>{item.parameters[1].values[0]}</li>)}
       </ul>
     </div>
   );
