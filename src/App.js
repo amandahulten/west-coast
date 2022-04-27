@@ -37,7 +37,7 @@ function App() {
       )
         .then((response) => response.json())
         .then((entries) => {
-          console.log("city", city);
+          // console.log("city", city);
           setData((prevData) => [...prevData, entries.timeSeries]);
         })
         .catch((err) => {
@@ -55,7 +55,7 @@ function App() {
         <Card
           src={stromstadimg}
           weather={data}
-          header={cities[0].city}
+          // header={data.cities[0].city}
           alt="Bild"
         />
       </div>

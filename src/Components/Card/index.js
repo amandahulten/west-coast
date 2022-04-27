@@ -7,7 +7,7 @@ const Card = (props) => {
       <div className={styles.cardContainer}>
         <h2>
           {props.weather.slice(0, 1).map((item, i) => (
-            <p key={i}>{item.parameters[10].values[0]}</p>
+            <p key={i}>{item[0].parameters[10].values[0]}°C</p>
           ))}
         </h2>
         <h1>{props.header}</h1>
