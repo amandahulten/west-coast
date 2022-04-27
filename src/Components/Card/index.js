@@ -1,13 +1,13 @@
 import React from "react";
-import "./card.css";
+import styles from "./Card.module.scss";
 
 const Card = (props) => {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <h2>{props.weather}</h2>
-      <img className="image" src={props.src}></img>
-      <p>{props.emoji}</p>
       <h1>{props.header}</h1>
+      <img src={props.src} />
+      <p>{props.emoji}</p>
     </div>
   );
 };

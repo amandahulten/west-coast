@@ -10,7 +10,7 @@ function App() {
   //  const [loading, setLoading] = useState(true);
   //  const [error, setError] = useState(null);
 
-  const Stromstad = useEffect(() => {
+  useEffect(() => {
     fetch(
       `https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/11.61272/lat/58.242343/data.json`
     )
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div>
-      <Nav></Nav>
+      <Nav />
       <div className="container">
         <Card
           src={stromstadimg}
@@ -35,7 +35,6 @@ function App() {
           }
           header="Hejsan"
         />
-        <p>{emojis[0]}</p>
       </div>
     </div>
   );
