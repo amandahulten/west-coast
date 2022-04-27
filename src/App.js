@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Components/Card";
+import stromstadimg from "./images/stromstad.png";
 
 function App() {
   const [data, setData] = useState(null);
@@ -20,14 +21,17 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Card header="Hejsan" />
-      <h1>
-        {data &&
+    <div className="container">
+      <Card
+        src={stromstadimg}
+        weather={
+          data &&
           data
             .slice(0, 1)
-            .map((item, i) => <li key={i}>{item.parameters[10].values[0]}</li>)}
-      </h1>
+            .map((item, i) => <p key={i}>{item.parameters[10].values[0]}</p>)
+        }
+        header="Hejsan"
+      />
       <p>{emojis[0]}</p>
     </div>
   );

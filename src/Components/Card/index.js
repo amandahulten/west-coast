@@ -1,21 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import Image from "react";
-
-const StyledCard = styled.div`
-  background-color: black;
-  width: 300px;
-  height: 400px;
-  box-shadow: 5px 10px 8px #888888;
-`;
+import "./card.css";
 
 const Card = (props) => {
   return (
-    <StyledCard>
-      {/* <Image source={props.src} /> */}
-      <h1>{props.header}</h1>
+    <div className="container">
       <h2>{props.weather}</h2>
-    </StyledCard>
+      <img className="image" src={props.src}></img>
+      <p>{props.emoji}</p>
+      <h1>{props.header}</h1>
+    </div>
   );
 };
 
