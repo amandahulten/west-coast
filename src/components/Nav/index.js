@@ -1,6 +1,8 @@
+import styles from "./Nav.module.scss";
+
 const Nav = (props) => {
     return (
-      <div>
+      <div className={styles.navContainer}>
           <div>
             <h1>VV</h1>
           </div>
