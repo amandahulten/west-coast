@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import Card from "./components/Card";
 import Nav from "./components/Nav";
 import stromstadimg from "./images/stromstad.png";
-import gbgimg from "./images/goteborgstad.jpeg";
+import fjallbackaimg from "./images/fjallbacka.jpeg";
+import skarhamngimg from "./images/skarhamn.jpeg";
+import smogenimg from "./images/smogen.webp";
+import grebbestadimg from "./images/grebbestad.jpeg";
+import falkenbergimg from "./images/falkenberg.jpeg";
+import varbergimg from "./images/varberg.jpeg";
+import tylosandimg from "./images/tylosand.jpeg";
+import onsalaimg from "./images/onsala.jpeg";
 
 function App() {
   const [data, setData] = useState([]);
@@ -15,21 +22,67 @@ function App() {
     const cities = [
       {
         city: "Strömstad",
+        south: false,
         lon: 11.61272,
         lat: 58.242343,
         picture: stromstadimg
       },
       {
-        city: "Göteborg",
+        city: "Fjällbacka",
+        south: false,
         lon: 11.97456,
         lat: 57.70887,
-        picture: gbgimg
+        picture: fjallbackaimg
       },
-      // {
-      //   city: "Strömstad",
-      //   lon: 10,
-      //   lat: 16,
-      // },
+      {
+        city: "Skärhamn",
+        south: false,
+        lon: 11.549795,
+        lat: 57.990922,
+        picture: skarhamngimg
+      },
+      {
+        city: "Smögen",
+        south: false,
+        lon: 11.226118,
+        lat: 58.353644,
+        picture: smogenimg
+      },
+      {
+        city: "Grebbestad",
+        south: false,
+        lon: 11.254233,
+        lat: 58.692007,
+        picture: grebbestadimg
+      },
+      {
+        city: "Onsala",
+        south: true,
+        lon: 12.030270,
+        lat: 57.427218,
+        picture: onsalaimg
+      },
+      {
+        city: "Falkenberg",
+        south: true,
+        lon: 12.534556,
+        lat: 56.899686,
+        picture: falkenbergimg
+      },
+      {
+        city: "Varberg",
+        south: true,
+        lon: 12.250294,
+        lat: 57.105741,
+        picture: varbergimg
+      },
+      {
+        city: "Tylösand",
+        south: true,
+        lon: 12.731792,
+        lat: 56.648600,
+        picture: tylosandimg
+      }
     ];
 
     for (let index = 0; index < cities.length; index++) {
@@ -49,7 +102,7 @@ function App() {
     }
   }, []);
 
-  console.log(data[0]);
+  console.log(data);
 
   return (
     <div>
