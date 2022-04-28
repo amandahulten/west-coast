@@ -2,3 +2,19 @@
   display: flex;
   flex-direction: column;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+  align-items: center;
+  justify-content: center;
+  padding: 3em;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}

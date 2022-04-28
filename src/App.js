@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./App.css";
 import Card from "./components/Card";
 import Nav from "./components/Nav";
 import stromstadimg from "./images/stromstad.png";
@@ -10,6 +11,9 @@ import falkenbergimg from "./images/falkenberg.jpeg";
 import varbergimg from "./images/varberg.jpeg";
 import tylosandimg from "./images/tylosand.jpeg";
 import onsalaimg from "./images/onsala.jpeg";
+import Button from "./components/Button";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
 
 function App() {
   const [data, setData] = useState([]);
@@ -107,6 +111,13 @@ function App() {
   return (
     <div>
       <Nav />
+      <div className="hero-section">
+        <Hero />
+      </div>
+      <div className="buttons">
+        <Button message="Norr" />
+        <Button message="Söder" />
+      </div>
       <div className="container">
       {data && data.map((item, i) => (
         <Card
@@ -118,6 +129,7 @@ function App() {
         />
           ))}
       </div>
+      <Footer />
     </div>
   );
 }

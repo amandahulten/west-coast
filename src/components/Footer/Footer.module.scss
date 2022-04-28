@@ -1,0 +1,18 @@
+.footerContainer {
+    height: 242px;
+    background-color: #AFC8FA;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    h1 {
+    font-family: 'Italiana', serif;
+    font-size: 58px;
+    }
+
+    p {
+    font-family: 'Italiana', serif;
+    font-size: 16px;
+    }
+}

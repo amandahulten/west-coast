@@ -1,6 +1,6 @@
 import styles from "./Nav.module.scss";
 
-const Nav = (props) => {
+const Nav = () => {
     return (
       <div className={styles.navContainer}>
           <div>
