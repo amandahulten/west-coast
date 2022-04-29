@@ -17,6 +17,7 @@ import Hero from "./components/Hero";
 
 function App() {
   const [data, setData] = useState([]);
+  // const [filterList, setFilterList] = useState();
   // const emojis = ["☀️", "☁️"];
 
   //  const [loading, setLoading] = useState(true);
@@ -29,64 +30,64 @@ function App() {
         south: false,
         lon: 11.61272,
         lat: 58.242343,
-        picture: stromstadimg
+        picture: stromstadimg,
       },
       {
         city: "Fjällbacka",
         south: false,
         lon: 11.97456,
         lat: 57.70887,
-        picture: fjallbackaimg
+        picture: fjallbackaimg,
       },
       {
         city: "Skärhamn",
         south: false,
         lon: 11.549795,
         lat: 57.990922,
-        picture: skarhamngimg
+        picture: skarhamngimg,
       },
       {
         city: "Smögen",
         south: false,
         lon: 11.226118,
         lat: 58.353644,
-        picture: smogenimg
+        picture: smogenimg,
       },
       {
         city: "Grebbestad",
         south: false,
         lon: 11.254233,
         lat: 58.692007,
-        picture: grebbestadimg
+        picture: grebbestadimg,
       },
       {
         city: "Onsala",
         south: true,
-        lon: 12.030270,
+        lon: 12.03027,
         lat: 57.427218,
-        picture: onsalaimg
+        picture: onsalaimg,
       },
       {
         city: "Falkenberg",
         south: true,
         lon: 12.534556,
         lat: 56.899686,
-        picture: falkenbergimg
+        picture: falkenbergimg,
       },
       {
         city: "Varberg",
         south: true,
         lon: 12.250294,
         lat: 57.105741,
-        picture: varbergimg
+        picture: varbergimg,
       },
       {
         city: "Tylösand",
         south: true,
         lon: 12.731792,
-        lat: 56.648600,
-        picture: tylosandimg
-      }
+        lat: 56.6486,
+        picture: tylosandimg,
+      },
     ];
 
     for (let index = 0; index < cities.length; index++) {
@@ -94,10 +95,15 @@ function App() {
 
       fetch(
         `https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/${city.lon}/lat/${city.lat}/data.json`
-        )
+      )
         .then((response) => response.json())
         .then((entries) => {
-          const object = { entries: entries.timeSeries, name: city.city, picture: city.picture };
+          const object = {
+            entries: entries.timeSeries,
+            name: city.city,
+            picture: city.picture,
+            south: city.south,
+          };
           setData((prevData) => [...prevData, object]);
         })
         .catch((err) => {
@@ -106,7 +112,25 @@ function App() {
     }
   }, []);
 
-  console.log(data);
+  // function buttonNorth(e) {
+  //   e.preventDefault();
+
+  //   // return data.filter((item) => item.south === false);
+
+  //   return data && data.map((item) => item.south);
+  // }
+  const filterItem = (item) => {
+    const newItem = data.filter((newVal) => {
+      return newVal.category === item.south;
+      // comparing category for displaying data
+    });
+    setData(newItem);
+  };
+
+  //   console.log(data);
+
+  //   // console.log("You clicked submit.");
+  // }
 
   return (
     <div>
@@ -115,18 +139,20 @@ function App() {
         <Hero />
       </div>
       <div className="buttons">
-        <Button message="Norr" />
+        <Button onClick={filterItem} message="Norr" />
+
         <Button message="Söder" />
       </div>
-      <div className="container">
-      {data && data.map((item, i) => (
-        <Card
-          key={i}
-          src={item.picture}
-          weather={item.entries[0].parameters[10].values[0]}
-          header={item.name}
-          alt="Bild"
-        />
+      <div className="card-container">
+        {data &&
+          data.map((item, i) => (
+            <Card
+              key={i}
+              src={item.picture}
+              weather={item.entries[0].parameters[10].values[0]}
+              header={item.name}
+              alt="Bild"
+            />
           ))}
       </div>
       <Footer />

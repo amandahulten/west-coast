@@ -1,6 +1,9 @@
-.container {
+.card-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
 .buttons {
