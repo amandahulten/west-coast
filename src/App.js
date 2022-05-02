@@ -146,32 +146,15 @@ function App() {
   //   });
   // }
 
+  // Function to filter out cities depending on south or north
   function filterTown(bool) {
     var test = data.filter(function (el) {
       return el.south === bool;
     });
-    // console.log(test);
+    console.log(test);
   }
-
-  // filterTown();
-
-  // function degrees() {
-  //   var newDeg = data.map((item, i) => {
-  //     return item.entries[0].parameters[10].values[0]
-  //   });
-  //   console.log(newDeg);
-  // }
-
-  // degrees();
-
-
   
-  //   // console.log("You clicked submit.");
-  // }
-    
-  // console.log(data);
-
-
+  // Sorting the data on degrees
   data.sort(function (a, b) {
     return b.entries[0].parameters[10].values[0] - a.entries[0].parameters[10].values[0];
   });
@@ -183,7 +166,7 @@ function App() {
         <Hero />
       </div>
       <div className="buttons">
-        <Button onClick={filterTown} message="Norr" />
+        <Button onClick={filterTown(true)} message="Norr" />
 
         <Button onClick={filterTown}  message="Söder" />
       </div>
