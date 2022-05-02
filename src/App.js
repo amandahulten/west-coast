@@ -128,15 +128,14 @@ function App() {
   //   setData(newItem);
   // };
 
-  function filterTown() {
-    // console.log(data);
-    var south = data.filter((element, i) => {
-      return element.south === false
+  function filterTown(bool) {
+    var cities = data.filter((element, i) => {
+      return element.south === bool
     })
-    console.log(south);
+    console.log(cities);
   }
 
-  filterTown();
+  // filterTown();
 
   //   console.log(data);
 
@@ -150,9 +149,9 @@ function App() {
         <Hero />
       </div>
       <div className="buttons">
-        <Button  message="Norr" />
+        <Button onClick={filterTown(false)} message="Norr" />
 
-        <Button message="Söder" />
+        <Button onClick={filterTown(true)} message="Söder" />
       </div>
       <div className="card-container">
         {data &&
