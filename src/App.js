@@ -90,6 +90,11 @@ function App() {
       },
     ];
 
+    // const newArray = cities.filter(function (el) {
+    //   return el.south === false;
+    // });
+    // console.log(newArray);
+
     for (let index = 0; index < cities.length; index++) {
       const city = cities[index];
 
@@ -128,19 +133,48 @@ function App() {
   //   setData(newItem);
   // };
 
+  // function filterTown(bool) {
+  //   var cities = data.filter((element, i) => {
+  //     return element.south === bool
+  //   })
+  //   console.log(cities);
+  // }
+
+  // function filterTown(bool) {
+  //   data.filter((element, i) => {
+  //     return element.south === bool
+  //   });
+  // }
+
   function filterTown(bool) {
-    var cities = data.filter((element, i) => {
-      return element.south === bool
-    })
-    console.log(cities);
+    var test = data.filter(function (el) {
+      return el.south === bool;
+    });
+    // console.log(test);
   }
 
   // filterTown();
 
-  //   console.log(data);
+  // function degrees() {
+  //   var newDeg = data.map((item, i) => {
+  //     return item.entries[0].parameters[10].values[0]
+  //   });
+  //   console.log(newDeg);
+  // }
 
+  // degrees();
+
+
+  
   //   // console.log("You clicked submit.");
   // }
+    
+  // console.log(data);
+
+
+  data.sort(function (a, b) {
+    return b.entries[0].parameters[10].values[0] - a.entries[0].parameters[10].values[0];
+  });
 
   return (
     <div>
@@ -149,9 +183,9 @@ function App() {
         <Hero />
       </div>
       <div className="buttons">
-        <Button onClick={filterTown(false)} message="Norr" />
+        <Button onClick={filterTown} message="Norr" />
 
-        <Button onClick={filterTown(true)} message="Söder" />
+        <Button onClick={filterTown}  message="Söder" />
       </div>
       <div className="card-container">
         {data &&
@@ -163,7 +197,7 @@ function App() {
               header={item.name}
               alt="Bild"
             />
-          ))}
+          ))};
       </div>
       <Footer />
     </div>
