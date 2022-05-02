@@ -104,6 +104,7 @@ function App() {
             picture: city.picture,
             south: city.south,
           };
+          // console.log(city.south);
           setData((prevData) => [...prevData, object]);
         })
         .catch((err) => {
@@ -119,13 +120,23 @@ function App() {
 
   //   return data && data.map((item) => item.south);
   // }
-  const filterItem = (item) => {
-    const newItem = data.filter((newVal) => {
-      return newVal.category === item.south;
-      // comparing category for displaying data
-    });
-    setData(newItem);
-  };
+  // const filterItem = (item) => {
+  //   const newItem = data.filter((newVal) => {
+  //     return newVal.category === item.south;
+  //     // comparing category for displaying data
+  //   });
+  //   setData(newItem);
+  // };
+
+  function filterTown() {
+    // console.log(data);
+    var south = data.filter((element, i) => {
+      return element.south === false
+    })
+    console.log(south);
+  }
+
+  filterTown();
 
   //   console.log(data);
 
@@ -139,7 +150,7 @@ function App() {
         <Hero />
       </div>
       <div className="buttons">
-        <Button onClick={filterItem} message="Norr" />
+        <Button  message="Norr" />
 
         <Button message="Söder" />
       </div>
