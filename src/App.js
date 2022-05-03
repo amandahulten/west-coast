@@ -11,6 +11,9 @@ import falkenbergimg from "./images/falkenberg.jpeg";
 import varbergimg from "./images/varberg.jpeg";
 import tylosandimg from "./images/tylosand.jpeg";
 import onsalaimg from "./images/onsala.jpeg";
+import henanimg from "./images/henan.jpeg";
+import bastadimg from "./images/bastad.webp";
+import helsingborgimg from "./images/helsingborg.jpeg";
 import Button from "./components/Button";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -59,6 +62,13 @@ function App() {
         picture: grebbestadimg,
       },
       {
+        city: "Henån",
+        isSouth: false,
+        lon: 11.6793,
+        lat: 58.2362,
+        picture: henanimg,
+      },
+      {
         city: "Onsala",
         isSouth: true,
         lon: 12.03027,
@@ -85,6 +95,20 @@ function App() {
         lon: 12.731792,
         lat: 56.6486,
         picture: tylosandimg,
+      },
+      {
+        city: "Helsingborg",
+        isSouth: true,
+        lon: 12.860715,
+        lat: 56.426789,
+        picture: helsingborgimg,
+      },
+      {
+        city: "Båstad",
+        isSouth: true,
+        lon: 12.860715,
+        lat: 56.426789,
+        picture: bastadimg,
       },
     ];
 
