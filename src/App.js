@@ -21,6 +21,10 @@ function App() {
   const [isFiltered, setIsFiltered] = useState(false);
   // const emojis = ["☀️", "☁️"];
 
+  //Knappar liggandes desktop
+  //Korten 3 per rad desktop
+  //(kanske regn)
+
   useEffect(() => {
     const cities = [
       {
@@ -111,6 +115,8 @@ function App() {
         });
     }
   }, []);
+
+  console.log(data);
 
   // Function to filter out cities depending on south or north
   function filterTown(isSouth) {
