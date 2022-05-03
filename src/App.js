@@ -90,11 +90,6 @@ function App() {
       },
     ];
 
-    // const newArray = cities.filter(function (el) {
-    //   return el.south === false;
-    // });
-    // console.log(newArray);
-
     for (let index = 0; index < cities.length; index++) {
       const city = cities[index];
 
@@ -153,10 +148,13 @@ function App() {
     });
     console.log(test);
   }
-  
+
   // Sorting the data on degrees
   data.sort(function (a, b) {
-    return b.entries[0].parameters[10].values[0] - a.entries[0].parameters[10].values[0];
+    return (
+      b.entries[0].parameters[10].values[0] -
+      a.entries[0].parameters[10].values[0]
+    );
   });
 
   return (
@@ -168,7 +166,7 @@ function App() {
       <div className="buttons">
         <Button onClick={filterTown(true)} message="Norr" />
 
-        <Button onClick={filterTown}  message="Söder" />
+        <Button onClick={filterTown} message="Söder" />
       </div>
       <div className="card-container">
         {data &&
@@ -180,7 +178,8 @@ function App() {
               header={item.name}
               alt="Bild"
             />
-          ))};
+          ))}
+        ;
       </div>
       <Footer />
     </div>
