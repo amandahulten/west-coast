@@ -22,11 +22,6 @@ function App() {
   const [data, setData] = useState([]);
   const [filterList, setFilterList] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
-  // const emojis = ["☀️", "☁️"];
-
-  //Knappar liggandes desktop
-  //Korten 3 per rad desktop
-  //(kanske regn)
 
   useEffect(() => {
     const cities = [
@@ -140,8 +135,6 @@ function App() {
     }
   }, []);
 
-  console.log(data);
-
   // Function to filter out cities depending on south or north
   function filterTown(isSouth) {
     setFilterList(
@@ -149,7 +142,6 @@ function App() {
         return el.south === isSouth;
       })
     );
-
     setIsFiltered(true);
   }
 
@@ -162,7 +154,7 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="container">
       <Nav />
       <div className="hero-section">
         <Hero />
