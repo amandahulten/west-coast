@@ -17,73 +17,71 @@ import Hero from "./components/Hero";
 
 function App() {
   const [data, setData] = useState([]);
-  const [filterList, setFilterList] = useState();
+  const [filterList, setFilterList] = useState([]);
+  const [isFiltered, setIsFiltered] = useState(false);
   // const emojis = ["☀️", "☁️"];
-
-  //  const [loading, setLoading] = useState(true);
-  //  const [error, setError] = useState(null);
 
   useEffect(() => {
     const cities = [
       {
         city: "Strömstad",
-        south: false,
+        isSouth: false,
         lon: 11.61272,
         lat: 58.242343,
         picture: stromstadimg,
       },
       {
         city: "Fjällbacka",
-        south: false,
+        isSouth: false,
         lon: 11.97456,
         lat: 57.70887,
         picture: fjallbackaimg,
       },
       {
         city: "Skärhamn",
-        south: false,
+        isSouth: false,
         lon: 11.549795,
         lat: 57.990922,
         picture: skarhamngimg,
       },
       {
         city: "Smögen",
-        south: false,
+        isSouth: false,
         lon: 11.226118,
         lat: 58.353644,
         picture: smogenimg,
       },
       {
         city: "Grebbestad",
-        south: false,
+        isSouth: false,
         lon: 11.254233,
         lat: 58.692007,
         picture: grebbestadimg,
       },
       {
         city: "Onsala",
-        south: true,
+        isSouth: true,
         lon: 12.03027,
         lat: 57.427218,
         picture: onsalaimg,
       },
       {
         city: "Falkenberg",
-        south: true,
+        isSouth: true,
         lon: 12.534556,
         lat: 56.899686,
         picture: falkenbergimg,
       },
       {
         city: "Varberg",
-        south: true,
+        isSouth: true,
         lon: 12.250294,
         lat: 57.105741,
         picture: varbergimg,
       },
       {
         city: "Tylösand",
-        south: true,
+        isSouth: true,
         lon: 12.731792,
         lat: 56.6486,
         picture: tylosandimg,
@@ -102,9 +100,9 @@ function App() {
             entries: entries.timeSeries,
             name: city.city,
             picture: city.picture,
-            south: city.south,
+            south: city.isSouth,
           };
-          // console.log(city.south);
+
           setData((prevData) => [...prevData, object]);
           setFilterList((prevData) => [...prevData, object]);
         })
@@ -116,10 +114,13 @@ function App() {
 
   // Function to filter out cities depending on south or north
   function filterTown(isSouth) {
-    data.filter(function (el) {
-      setFilterList(filterTown);
-      return el.south === isSouth;
-    });
+    setFilterList(
+      data.filter(function (el) {
+        return el.south === isSouth;
+      })
+    );
+
+    setIsFiltered(true);
   }
 
   // Sorting the data on degrees
@@ -137,22 +138,30 @@ function App() {
         <Hero />
       </div>
       <div className="buttons">
-        <Button onClick={() => filterTown(true)} message="Norr" />
+        <Button onClick={() => filterTown(false)} message="Norr" />
 
-        <Button onClick={() => filterTown(false)} message="Söder" />
+        <Button onClick={() => filterTown(true)} message="Söder" />
       </div>
       <div className="card-container">
-        {filterList &&
-          filterList.map((item, i) => (
-            <Card
-              key={i}
-              src={item.picture}
-              weather={item.entries[0].parameters[10].values[0]}
-              header={item.name}
-              alt="Bild"
-            />
-          ))}
-        ;
+        {isFiltered
+          ? filterList.map((item, i) => (
+              <Card
+                key={i}
+                src={item.picture}
+                weather={item.entries[0].parameters[10].values[0]}
+                header={item.name}
+                alt="Naturbild från stad på västkusten"
+              />
+            ))
+          : data.map((item, i) => (
+              <Card
+                key={i}
+                src={item.picture}
+                weather={item.entries[0].parameters[10].values[0]}
+                header={item.name}
+                alt="Naturbild från stad på västkusten"
+              />
+            ))}
       </div>
       <Footer />
     </div>
