@@ -17,7 +17,7 @@ import Hero from "./components/Hero";
 
 function App() {
   const [data, setData] = useState([]);
-  // const [filterList, setFilterList] = useState();
+  const [filterList, setFilterList] = useState();
   // const emojis = ["☀️", "☁️"];
 
   //  const [loading, setLoading] = useState(true);
@@ -106,6 +106,7 @@ function App() {
           };
           // console.log(city.south);
           setData((prevData) => [...prevData, object]);
+          setFilterList((prevData) => [...prevData, object]);
         })
         .catch((err) => {
           console.log(err.message);
@@ -113,40 +114,12 @@ function App() {
     }
   }, []);
 
-  // function buttonNorth(e) {
-  //   e.preventDefault();
-
-  //   // return data.filter((item) => item.south === false);
-
-  //   return data && data.map((item) => item.south);
-  // }
-  // const filterItem = (item) => {
-  //   const newItem = data.filter((newVal) => {
-  //     return newVal.category === item.south;
-  //     // comparing category for displaying data
-  //   });
-  //   setData(newItem);
-  // };
-
-  // function filterTown(bool) {
-  //   var cities = data.filter((element, i) => {
-  //     return element.south === bool
-  //   })
-  //   console.log(cities);
-  // }
-
-  // function filterTown(bool) {
-  //   data.filter((element, i) => {
-  //     return element.south === bool
-  //   });
-  // }
-
   // Function to filter out cities depending on south or north
-  function filterTown(bool) {
-    var test = data.filter(function (el) {
-      return el.south === bool;
+  function filterTown(isSouth) {
+    data.filter(function (el) {
+      setFilterList(filterTown);
+      return el.south === isSouth;
     });
-    console.log(test);
   }
 
   // Sorting the data on degrees
@@ -164,13 +137,13 @@ function App() {
         <Hero />
       </div>
       <div className="buttons">
-        <Button onClick={filterTown(true)} message="Norr" />
+        <Button onClick={() => filterTown(true)} message="Norr" />
 
-        <Button onClick={filterTown} message="Söder" />
+        <Button onClick={() => filterTown(false)} message="Söder" />
       </div>
       <div className="card-container">
-        {data &&
-          data.map((item, i) => (
+        {filterList &&
+          filterList.map((item, i) => (
             <Card
               key={i}
               src={item.picture}
