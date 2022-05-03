@@ -170,7 +170,7 @@ function App() {
               <Card
                 key={i}
                 src={item.picture}
-                weather={item.entries[0].parameters[10].values[0]}
+                weather={item.entries[2].parameters[10].values[0]}
                 header={item.name}
                 alt="Naturbild från stad på västkusten"
               />
@@ -179,7 +179,7 @@ function App() {
               <Card
                 key={i}
                 src={item.picture}
-                weather={item.entries[0].parameters[10].values[0]}
+                weather={item.entries[2].parameters[10].values[0]}
                 header={item.name}
                 alt="Naturbild från stad på västkusten"
               />
