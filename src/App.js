@@ -148,8 +148,8 @@ function App() {
   // Sorting the data on degrees
   data.sort(function (a, b) {
     return (
-      b.entries[0].parameters[10].values[0] -
-      a.entries[0].parameters[10].values[0]
+      b.entries[2].parameters[10].values[0] -
+      a.entries[2].parameters[10].values[0]
     );
   });
 
